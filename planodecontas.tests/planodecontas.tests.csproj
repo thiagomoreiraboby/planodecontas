@@ -29,6 +29,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\planodecontas.api\planodecontas.api.csproj" />
+	  <ProjectReference Include="..\planodecontas.application\planodecontas.application.csproj" />
+	  <ProjectReference Include="..\planodecontas.domain\planodecontas.domain.csproj" />
+	  <ProjectReference Include="..\planodecontas.infra\planodecontas.infra.csproj" />
+	  <ProjectReference Include="..\planodecontas.ioc\planodecontas.ioc.csproj" />
   </ItemGroup>
 
 </Project>
