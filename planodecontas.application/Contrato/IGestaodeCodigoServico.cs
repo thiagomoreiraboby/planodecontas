@@ -14,6 +14,6 @@ namespace planodecontas.application.Contrato
         CodigoSugeridoDto GetCodigoContasPrimarios(int codigo);
         Task<CodigoSugeridoDto> GetCodigoSugerido(PlanodeConta entidade);
         void ValidarCodigoDigitado(string? codigoDigitado);
-        void ValidarCodigoDigitadoComApí(string codigoDigitado, PlanodeConta contapai);
+        Task<bool> ValidarCodigoDigitadoComApí(string codigoDigitado, PlanodeConta contapai);
     }
 }

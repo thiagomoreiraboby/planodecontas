@@ -66,17 +66,17 @@ namespace planodecontas.application.Servicos
             if (GetCodigoContaByCodigoSugerido(codigoDigitado) > MaxCodigo)
                 throw new Exception($"Excedeu o codigo maximo: {MaxCodigo}!");
         }
-        public async void ValidarCodigoDigitadoComApí(string codigoDigitado, PlanodeConta contapai)
+        public async Task<bool> ValidarCodigoDigitadoComApí(string codigoDigitado, PlanodeConta contapai)
         {
-            var codigopai = await GetCodigodoPai(contapai);
-            var codigodigitadopai = string.Empty;
-            var array = codigoDigitado.Split('.');
-            for (int i = 0; i < array.Length - 1; i++)
-            {
-                codigodigitadopai += $"{array[i]}.";
-            }
-            if (codigopai != codigodigitadopai)
-                throw new Exception($"Código digitado não pertence a conta pai informada");
+                var codigopai = await GetCodigodoPai(contapai);
+                var codigodigitadopai = string.Empty;
+                var array = codigoDigitado.Split('.');
+                for (int i = 0; i < array.Length - 1; i++)
+                {
+                    codigodigitadopai += $"{array[i]}.";
+                }
+            return codigopai == codigodigitadopai;
+                    
         }
 
         private async Task<string> GetCodigodoPai(PlanodeConta? entidade, List<int> listacodigo = null)

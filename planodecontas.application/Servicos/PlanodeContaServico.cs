@@ -88,7 +88,8 @@ namespace planodecontas.application.Servicos
                     var contapai = await repositorio.GetPlanodeContaPaiById((int)dto.IdContaPai);
                     if(contapai == null)
                         throw new Exception("Código da conta pai não foi encontrado");
-                    gestaodeCodigoServico.ValidarCodigoDigitadoComApí(dto.Codigo, contapai);
+                    if(! await gestaodeCodigoServico.ValidarCodigoDigitadoComApí(dto.Codigo, contapai))
+                        throw new Exception($"Código digitado não pertence a conta pai informada");
                     dto.Tipo = contapai.Tipo;
                 }
 
